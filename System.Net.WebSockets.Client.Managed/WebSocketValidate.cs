@@ -1,12 +1,13 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
+﻿// Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this
+// file to you under the MIT license. See the LICENSE file in the project root for more information.
 
+using System;
 using System.Diagnostics;
 using System.Globalization;
+using System.Net.WebSockets;
 using System.Text;
 
-namespace System.Net.WebSockets.Managed
+namespace CitadelCore.Websockets.Managed
 {
     internal static partial class WebSocketValidate
     {
@@ -27,7 +28,8 @@ namespace System.Net.WebSockets.Managed
                 {
                     if (currentState == validState)
                     {
-                        // Ordering is important to maintain .NET 4.5 WebSocket implementation exception behavior.
+                        // Ordering is important to maintain .NET 4.5 WebSocket implementation
+                        // exception behavior.
                         if (isDisposed)
                         {
                             throw new ObjectDisposedException(nameof(ClientWebSocket));
@@ -96,7 +98,8 @@ namespace System.Net.WebSockets.Managed
                 closeStatusCode == CloseStatusCodeAbort ||
                 closeStatusCode == CloseStatusCodeFailedTLSHandshake)
             {
-                // CloseStatus 1006 means Aborted - this will never appear on the wire and is reflected by calling WebSocket.Abort
+                // CloseStatus 1006 means Aborted - this will never appear on the wire and is
+                // reflected by calling WebSocket.Abort
                 throw new ArgumentException(SR.Format(SR.net_WebSockets_InvalidCloseStatusCode,
                     closeStatusCode),
                     nameof(closeStatus));

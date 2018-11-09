@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace System.Net.WebSockets.Client.Managed {
+namespace CitadelCore.Websockets.Client.Managed {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace System.Net.WebSockets.Client.Managed {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("System.Net.WebSockets.Client.Managed.Strings", typeof(Strings).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CitadelCore.Websockets.Client.Managed.Strings", typeof(Strings).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

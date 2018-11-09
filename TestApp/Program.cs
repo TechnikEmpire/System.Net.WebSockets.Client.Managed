@@ -1,28 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets;
-using System.Net.WebSockets.Managed;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class Program
+    internal class Program
     {
-        const string WS_TEST_SERVER = "ws://echo.websocket.org";
-        const string WSS_TEST_SERVER = "wss://echo.websocket.org";
+        private const string WS_TEST_SERVER = "ws://echo.websocket.org";
+        private const string WSS_TEST_SERVER = "wss://echo.websocket.org";
 
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             TestConnection(WS_TEST_SERVER).GetAwaiter().GetResult();
             TestConnection(WSS_TEST_SERVER).GetAwaiter().GetResult();
         }
 
-        static async Task TestConnection(string server)
+        private static async Task TestConnection(string server)
         {
-            using (var ws = new System.Net.WebSockets.Managed.ClientWebSocket())
+            using (var ws = new CitadelCore.Websockets.Managed.ClientWebSocket())
             {
                 await ws.ConnectAsync(new Uri(server), CancellationToken.None);
 

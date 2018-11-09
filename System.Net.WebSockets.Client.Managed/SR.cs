@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.WebSockets.Client.Managed;
-using System.Text;
-using System.Threading.Tasks;
+﻿using CitadelCore.Websockets.Client.Managed;
 
 namespace System
 {
@@ -37,6 +32,5 @@ namespace System
         {
             return string.Format(str, p);
         }
-
     }
 }

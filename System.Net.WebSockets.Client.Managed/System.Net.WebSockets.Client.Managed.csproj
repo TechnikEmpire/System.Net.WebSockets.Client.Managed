@@ -4,19 +4,24 @@
     <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.1.1</Version>
     <Authors>Microsoft, Matthew Little</Authors>
     <Company>Microsoft, Pingman Tools</Company>
-    <PackageLicenseUrl>https://github.com/PingmanTools/System.Net.WebSockets.Client.Managed/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/PingmanTools/System.Net.WebSockets.Client.Managed/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/PingmanTools/System.Net.WebSockets.Client.Managed/</RepositoryUrl>
+    <PackageLicenseUrl>https://github.com/TechnikEmpire/System.Net.WebSockets.Client.Managed/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/TechnikEmpire/System.Net.WebSockets.Client.Managed</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/TechnikEmpire/System.Net.WebSockets.Client.Managed</RepositoryUrl>
     <PackageTags>websockets websocket-client websocketsharp clientwebsocket websocket4net</PackageTags>
-    <Description>Microsoft's managed implementation of System.Net.WebSockets.ClientWebSocket tweaked for use on Windows 7 and .NET 4.5</Description>
+    <Description>Microsoft's managed implementation of System.Net.WebSockets.ClientWebSocket tweaked for use on Windows 7 and .NET 4.5.
+
+This has been namespace'd to specifically be used in CitadelCore.</Description>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <PropertyGroup>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\System.Net.WebSockets.Client.Managed.xml</DocumentationFile>
+    <RootNamespace>CitadelCore.Websockets.Client.Managed</RootNamespace>
+    <AssemblyName>CitadelCore.Websockets.Client.Managed</AssemblyName>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

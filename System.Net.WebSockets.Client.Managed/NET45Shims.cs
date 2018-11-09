@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CitadelCore.Websockets.Managed;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
-using System.Net.WebSockets.Managed;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace System
 {
-    static class SocketExtensions
+    internal static class SocketExtensions
     {
         public static Task ConnectAsync(this Socket socket, IPAddress address, int port)
         {
@@ -24,7 +20,7 @@ namespace System
         }
     }
 
-    static class WebSocketUtil
+    internal static class WebSocketUtil
     {
         public static ManagedWebSocket CreateClientWebSocket(Stream innerStream,
             string subProtocol, int receiveBufferSize, int sendBufferSize,
@@ -66,12 +62,11 @@ namespace System
         }
     }
 
-    static class UriExtensions
+    internal static class UriExtensions
     {
         public static string GetIdnHost(this Uri uri)
         {
             return new Globalization.IdnMapping().GetAscii(uri.Host);
         }
     }
-
 }

@@ -1,14 +1,16 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
+﻿// Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this
+// file to you under the MIT license. See the LICENSE file in the project root for more information.
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Net.WebSockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 
-namespace System.Net.WebSockets.Managed
+namespace CitadelCore.Websockets.Managed
 {
     public sealed class ClientWebSocketOptions
     {
@@ -42,9 +44,21 @@ namespace System.Net.WebSockets.Managed
             _requestHeaders[headerName] = headerValue;
         }
 
-        internal WebHeaderCollection RequestHeaders { get { return _requestHeaders; } }
+        internal WebHeaderCollection RequestHeaders
+        {
+            get
+            {
+                return _requestHeaders;
+            }
+        }
 
-        internal List<string> RequestedSubProtocols { get { return _requestedSubProtocols; } }
+        internal List<string> RequestedSubProtocols
+        {
+            get
+            {
+                return _requestedSubProtocols;
+            }
+        }
 
         public bool UseDefaultCredentials
         {
@@ -206,7 +220,7 @@ namespace System.Net.WebSockets.Managed
             _buffer = buffer;
         }
 
-        #endregion WebSocket settings
+        #endregion WebSocket Settings
 
         #region Helpers
 

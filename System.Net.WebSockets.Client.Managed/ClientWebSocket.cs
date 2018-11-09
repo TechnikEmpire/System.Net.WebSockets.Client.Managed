@@ -1,12 +1,15 @@
-﻿// Licensed to the .NET Foundation under one or more agreements.
-// The .NET Foundation licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
+﻿// Licensed to the .NET Foundation under one or more agreements. The .NET Foundation licenses this
+// file to you under the MIT license. See the LICENSE file in the project root for more information.
 
+using System;
+using System.Collections.Specialized;
 using System.Diagnostics;
+using System.Net;
+using System.Net.WebSockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace System.Net.WebSockets.Managed
+namespace CitadelCore.Websockets.Managed
 {
     public sealed partial class ClientWebSocket : WebSocket
     {
@@ -21,19 +24,32 @@ namespace System.Net.WebSockets.Managed
         private readonly ClientWebSocketOptions _options;
         private WebSocketHandle _innerWebSocket; // may be mutable struct; do not make readonly
 
-        // NOTE: this is really an InternalState value, but Interlocked doesn't support
-        //       operations on values of enum types.
+        // NOTE: this is really an InternalState value, but Interlocked doesn't support operations on
+        // values of enum types.
         private int _state;
+
+        /// <summary>
+        /// Headers received post-connection.
+        /// </summary>
+        public NameValueCollection ResponseHeaders
+        {
+            get
+            {
+                return _innerWebSocket.ResponseHeaders;
+            }
+        }
 
         public ClientWebSocket()
         {
-            if (NetEventSource.IsEnabled) NetEventSource.Enter(this);
+            if (NetEventSource.IsEnabled)
+                NetEventSource.Enter(this);
             WebSocketHandle.CheckPlatformSupport();
 
             _state = (int)InternalState.Created;
             _options = new ClientWebSocketOptions();
 
-            if (NetEventSource.IsEnabled) NetEventSource.Exit(this);
+            if (NetEventSource.IsEnabled)
+                NetEventSource.Exit(this);
         }
 
         #region Properties
@@ -95,8 +111,10 @@ namespace System.Net.WebSockets.Managed
                 {
                     case InternalState.Created:
                         return WebSocketState.None;
+
                     case InternalState.Connecting:
                         return WebSocketState.Connecting;
+
                     default: // We only get here if disposed before connecting
                         Debug.Assert((InternalState)_state == InternalState.Disposed);
                         return WebSocketState.Closed;
@@ -153,7 +171,8 @@ namespace System.Net.WebSockets.Managed
             }
             catch (Exception ex)
             {
-                if (NetEventSource.IsEnabled) NetEventSource.Error(this, ex);
+                if (NetEventSource.IsEnabled)
+                    NetEventSource.Error(this, ex);
                 throw;
             }
         }
